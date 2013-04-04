@@ -26,3 +26,13 @@ Disadvantages
 - People may not want us spinning up http servers on their computers (they don't really have to know how it works though...).  IT WOULD BE SECURE
 - People may hate having to use the browser
 - Requires us to support some sort of http client for displaying information (this may only be a disadvantage if this would take more work than doing it all in-game)
+
+
+Architecture
+============
+
+A central server that uses gevent or twisted.  It will be what clients connect to and handle game-logic.
+
+Django Server - Requests from the central server who is currently connected and displays that information.  Also general game info that we wish to provide.
+
+client - The game that interacts with the central server, and hosts the local http server that the django server tries to communicate with.
