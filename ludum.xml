@@ -86,15 +86,14 @@ function init() {
     url: 'https://localhost:65456',
     async: false,
     jsonpCallback: 'jsonCallback',
-    contentType: 'application/json',
     dataType: 'jsonp',
-    data: {
+    data: JSON.stringify({
       'method': 'connect',
       'args': {
         'host': 'jacobvgardner.com',
         'port': 329,
         'game_number': 992
-      },
+      }),
     },
 
     success: function(json) {

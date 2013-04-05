@@ -2,9 +2,10 @@ from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 from multiprocessing import Process
 import urllib
 import json
-import socket, os
-from SocketServer import BaseServer
-from OpenSSL import SSL
+import ssl
+import urlparse
+
+# Warn about monkey in the middle attacks.
 
 
 class SecureHTTPServer(HTTPServer):
@@ -33,22 +34,21 @@ test = {
 }
 
 class Handler(BaseHTTPRequestHandler):
-    def setup(self):
-        self.connection = self.request
-        self.rfile = socket._fileobject(self.request, "rb", self.rbufsize)
-        self.wfile = socket._fileobject(self.request, "wb", self.wbufsize)
-
     def do_GET(self):
         print(self.path)
         if self.path.startswith('/?'):
             self.wfile.write('jsonCallback({0});'.format(json.dumps(test)))
-            #self.wfile.write(urllib.unquote(self.path[2:]))
+            self.wfile.write('\n')
+            self.wfile.write(urlparse.parse_qs(urlparse.urlparse(self.path).query))
+            # self.wfile.write(urlparse.parse_qs(urllib.unquote(self.path[2:])))
         else:
             self.wfile.write("No Command Recieved!\nI'll just wait here.")
 
 def rpc_server():
 
-    server = SecureHTTPServer((HOST, PORT), Handler)
+    server = HTTPServer((HOST, PORT), Handler)
+    # SSL
+    server.socket = ssl.wrap_socket(server.socket, certfile='./server.pem', server_side=True)
 
     server.serve_forever()
 
