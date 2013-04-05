@@ -93,8 +93,8 @@ function init() {
         'host': 'jacobvgardner.com',
         'port': 329,
         'game_number': 992
-      }),
-    },
+      },
+    }),
 
     success: function(json) {
       console.log(json)
