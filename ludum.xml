@@ -83,7 +83,7 @@ function init() {
 
   $.ajax({
     type: 'GET',
-    url: 'http://localhost:65456',
+    url: 'https://localhost:65456',
     async: false,
     jsonpCallback: 'jsonCallback',
     contentType: 'application/json',
