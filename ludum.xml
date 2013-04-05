@@ -39,6 +39,9 @@
 <body>
 
 <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.4" ></script>
+<script src="http://jacobgardner.github.com/ludum-dare-support/static/jquery-1.9.1.min.js"></script>
+<script src="http://jacobgardner.github.com/ludum-dare-support/static/xmlrpc/jquery.xmlrpc.min.js"></script>
+
 
 <h3>Simple Hangout App</h3>
 
@@ -78,6 +81,15 @@ function showParticipants() {
 
 function init() {
   // When API is ready...                                                         
+
+  $.xmlrpc({
+    url: 'http://localhost:65456/',
+    methodName: 'connect',
+    params: ['jacobvgardner.com', 32, 392],
+    success: function(response, status, jqXHR) { },
+    error: function(jqXHR, status, error) { },
+  });
+
   gapi.hangout.onApiReady.add(
       function(eventObj) {
         if (eventObj.isApiReady) {
