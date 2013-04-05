@@ -1,5 +1,6 @@
-from SimpleXMLRPCServer import SimpleXMLRPCServer
+from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 from multiprocessing import Process
+import urllib
 
 HOST = 'localhost'
 # 1 - 65535
@@ -8,11 +9,18 @@ PORT = 65456
 def connect(host, port, game_number):
     print(host, port, game_number)
 
-def rpc_server():
-    server = SimpleXMLRPCServer((HOST, PORT))
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print(self.path)
+        if self.path.startswith('/?'):
+            self.wfile.write(urllib.unquote(self.path[2:]))
+        else:
+            self.wfile.write("No Command Recieved!\nI'll just wait here.")
 
-    server.register_introspection_functions()
-    server.register_function(connect)
+def rpc_server():
+
+    server = HTTPServer((HOST, PORT), Handler)
+
     server.serve_forever()
 
 def main():

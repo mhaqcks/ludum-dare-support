@@ -81,14 +81,21 @@ function showParticipants() {
 function init() {
   // When API is ready...                                                         
 
-  $.xmlrpc({
-    url: 'http://localhost:65456/',
-    methodName: 'connect',
+  $.ajax({
+    url: 'http://localhost:65456',
     crossDomain: true,
-    params: ['jacobvgardner.com', 32, 392],
-    success: function(response, status, jqXHR) { },
-    error: function(jqXHR, status, error) { },
+    type: 'GET',
+    data: {
+      'method': 'connect',
+      'args': {
+        'host': 'jacobvgardner.com',
+        'port': 329,
+        'game_number': 992
+      },
+    }
   });
+
+
 
   gapi.hangout.onApiReady.add(
       function(eventObj) {
