@@ -84,6 +84,7 @@ function init() {
   $.xmlrpc({
     url: 'http://localhost:65456/',
     methodName: 'connect',
+    crossDomain: true,
     params: ['jacobvgardner.com', 32, 392],
     success: function(response, status, jqXHR) { },
     error: function(jqXHR, status, error) { },
