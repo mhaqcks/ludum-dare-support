@@ -87,7 +87,7 @@ function init() {
     async: false,
     jsonpCallback: 'jsonCallback',
     dataType: 'jsonp',
-    data: JSON.stringify({
+    data: 'json=' + JSON.stringify({
       'method': 'connect',
       'args': {
         'host': 'jacobvgardner.com',

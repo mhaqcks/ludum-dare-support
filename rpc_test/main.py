@@ -39,8 +39,8 @@ class Handler(BaseHTTPRequestHandler):
         if self.path.startswith('/?'):
             self.wfile.write('jsonCallback({0});'.format(json.dumps(test)))
             self.wfile.write('\n')
-            self.wfile.write(urlparse.parse_qs(urlparse.urlparse(self.path).query))
-            # self.wfile.write(urlparse.parse_qs(urllib.unquote(self.path[2:])))
+            # self.wfile.write(urlparse.urlparse(self.path).query)
+            self.wfile.write(urllib.unquote(self.path[2:]))
         else:
             self.wfile.write("No Command Recieved!\nI'll just wait here.")
 
