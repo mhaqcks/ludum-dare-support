@@ -1,5 +1,4 @@
 from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
-from multiprocessing import Process
 import urllib
 import json
 import ssl
@@ -13,8 +12,6 @@ class RPCHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         print(self.path)
         if self.path.startswith('/?'):
-            self.wfile.write('jsonCallback({0});'.format(json.dumps(test)))
-            self.wfile.write('\n')
             query = urlparse.urlparse(self.path).query
 
             variables = {}
@@ -27,14 +24,14 @@ class RPCHandler(BaseHTTPRequestHandler):
             if output['method'] not in self.functions:
                 self.wfile.write('This command has not been deemed safe by the overlords!')
             else:
-                self.functions[output['method']](**output['args'])
-                self.wfile.write(output)
+                reply = self.functions[output['method']](**output['args'])
+                self.wfile.write('jsonCallback({0})'.format(json.loads(reply)))
 
         else:
             self.wfile.write("No Command Recieved!\nI'll just wait here.")
 
 
-class LudumProcedureCallServer(self):
+class LudumProcedureCallServer(object):
     def __init__(self, host, port, certfile='./server.pem'):
         self.host = host
         self.port = port
@@ -52,9 +49,13 @@ class LudumProcedureCallServer(self):
         self.server = HTTPServer((self.host, self.port), self.handler)
         # SSL
         self.server.socket = ssl.wrap_socket(
-            server.socket, certfile=self.certfile, server_side=True)
+            self.server.socket, certfile=self.certfile, server_side=True)
 
         self.server.serve_forever()
+
+
+def connect(host, port, game_number):
+    print(host, port, game_number)
 
 # Warn about monkey in the middle attacks.
 if __name__ == '__main__':
@@ -63,3 +64,7 @@ if __name__ == '__main__':
     PORT = 65456
 
     rpc = LudumProcedureCallServer(HOST, PORT)
+
+    rpc.register_function(connect)
+
+    rpc.start()
