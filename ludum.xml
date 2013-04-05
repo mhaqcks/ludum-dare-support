@@ -82,9 +82,12 @@ function init() {
   // When API is ready...                                                         
 
   $.ajax({
-    url: 'http://localhost:65456',
-    crossDomain: true,
     type: 'GET',
+    url: 'http://localhost:65456',
+    async: false,
+    jsonpCallback: 'jsonCallback',
+    contentType: 'application/json',
+    dataType: 'jsonp',
     data: {
       'method': 'connect',
       'args': {
@@ -92,6 +95,10 @@ function init() {
         'port': 329,
         'game_number': 992
       },
+    }
+
+    success: function(json) {
+      console.log(json)
     }
   });
 
