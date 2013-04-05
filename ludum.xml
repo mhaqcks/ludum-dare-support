@@ -95,7 +95,7 @@ function init() {
         'port': 329,
         'game_number': 992
       },
-    }
+    },
 
     success: function(json) {
       console.log(json)
