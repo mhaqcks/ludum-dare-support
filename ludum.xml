@@ -38,8 +38,8 @@
 <body>
 
 <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.4" ></script>
-<script src="https://raw.github.com/jacobgardner/ludum-dare-support/master/static/jquery-1.9.1.min.js"></script>
-<script src="https://raw.github.com/jacobgardner/ludum-dare-support/master/static/xmlrpc/jquery.xmlrpc.min.js"></script>
+<script src="https://rawgithub.com/jacobgardner/ludum-dare-support/master/static/jquery-1.9.1.min.js"></script>
+<script src="https://rawgithub.com/jacobgardner/ludum-dare-support/master/static/xmlrpc/jquery.xmlrpc.min.js"></script>
 
 
 <h3>Simple Hangout App</h3>
