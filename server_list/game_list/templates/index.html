@@ -138,12 +138,12 @@
 
 	function populate_table(data, textStatus, jqXHR)
 	{
+		$('#gametable > tbody').empty();
 		data.gamedata.forEach(add_row);
 	}
 
 	function load_list()
 	{
-		$('#gametable > tbody').empty();
 
 		var game_number = $('#game-number').val();
 		if( game_number == '' )
