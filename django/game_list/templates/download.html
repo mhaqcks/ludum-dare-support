@@ -3,37 +3,47 @@
 {% block title %}Download{% endblock %}
 
 {% block nav-download %}
-  <li class="active"><a href="#">Download!</a></li>
+  <li class="active"><a href="#">
 {% endblock %}
 
 {% block content %}
 <div class="jumbotron">
-<h1>Download</h1>
+<h1>Download <i class="icon-download"></i></h1>
 <p class="lead">
 Here's where you'll find downloads
 </p>
 </div>
 
-
 <div class="row-fluid">
   <div style="text-align: center;" class="span4">
     <h2>Windows</h2>
     <img src="/static/img/os_icons/{{ icon.0 }}" class="img-rounded">
-    <p><a class="btn" href="#">Download 4 Windows</a></p>
+    <p><a id="windows" class="btn btn-info" href="#">
+    Download 4 Windows</a></p>
   </div>
   <div style="text-align: center;" class="span4">
     <h2>Linux</h2>
     <img src="/static/img/os_icons/{{ icon.1 }}" class="img-rounded">
-    <p><a class="btn" href="#">Download 4 Linux</a></p>
+    <p><a id="linux" class="btn btn-info" href="#">Download 4 Linux</a></p>
  </div>
   <div style="text-align: center;" class="span4">
     <h2>Macintosh</h2>
     <img src="/static/img/os_icons/{{ icon.2 }}" class="img-rounded">
-    <p><a class="btn" href="#">Download 4 Macintosh</a></p>
+    <p><a id="mac" class="btn btn-info" href="#">Download 4 Macintosh</a></p>
   </div>
 </div>
 
 <p class='pull-right'><small>Plush icons courtesy of <a href="iconsmaster.com">iconsmaster.com</a>.</small>
 
+<script>
+$(document).ready(function() {
+  btn = $('#' + $.client.os.toLowerCase());
+
+  if( btn.length != 0 ) {
+    btn.removeClass('btn-info');
+    btn.addClass('btn-success');
+  }
+});
+</script>
 
 {% endblock %}

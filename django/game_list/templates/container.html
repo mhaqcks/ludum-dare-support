@@ -84,30 +84,18 @@
   </head>
 
   <body>
-
     <div class="container">
-
       <div class="masthead" id="main-container">
         <h3 class="muted">{{ project }}</h3>
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                {% block nav-list %}
-                  <li><a href="{% url 'gamelist:home' %}">Server List</a></li>
-                {% endblock %}
-
-                {% block nav-download %}
-                  <li><a href="{% url 'gamelist:download' %}">Download!</a></li>
-                {% endblock %}
-
-                {% block nav-status %}
-                  <li><a href="{% url 'gamelist:status' %}">Server Status</a></li>
-                {% endblock %}
-
-                {% block nav-about %}
-                  <li><a href="{% url 'gamelist:about' %}">About</a></li>
-                {% endblock %}
+                {% block nav-list %}<li><a href="{% url 'gamelist:home' %}">{% endblock %}<i class="icon-list-alt"></i> Server List</a></li>
+                {% block nav-download %}<li><a href="{% url 'gamelist:download' %}">{% endblock %}<i class="icon-download"></i> Download</a></li>
+                {% block nav-status %}<li><a href="{% url 'gamelist:status' %}">{% endblock %}<i class="icon-beaker"></i> Server Status</a></li>
+                {% block nav-about %}<li><a href="{% url 'gamelist:about' %}">{% endblock %}<i class="icon-group"></i> About</a></li>
+                
               </ul>
             </div>
           </div>
@@ -125,7 +113,6 @@
       <div class="footer">
         <p>&copy; {{ project }} 2013</p>
       </div>
-
     </div> <!-- /container -->
 
     <a href="https://github.com/jacobgardner/ludum-dare-support"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
@@ -133,6 +120,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/static/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/js/jquery.client.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
 
   </body>
