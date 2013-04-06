@@ -45,20 +45,13 @@ def download(request):
     return render(request, 'download.html', context)
 
 JSON = [
-    {
-        "game_number": -1,
-        "game_name": "This is a game name!!",
-        "players": "2/5",
-        "status": "Particularly Slutty",
-        "locked": True
-    },
-    {
-        "game_number": -2,
-        "game_name": "This is not a game name!!",
-        "players": "5/5",
-        "status": "Ummm... Good, I guess.",
-        "locked": False
-    },
+    {"game_number": -1, "game_name": "This is a game name!!", "players": "2/5", "status": "Particularly Slutty", "locked": True},
+    {"game_number": -2, "game_name": "This is not a game name!!", "players": "5/5", "status": "Ummm... Good, I guess.", "locked": False},
+    {"game_number": 53, "game_name": "Emily", "players": "1/3", "status": "Yeap", "locked": False},
+    {"game_number": 54, "game_name": "Misty", "players": "2/3", "status": "Status Here", "locked": False},
+    {"game_number": 55, "game_name": "Keelie", "players": "3/3", "status": "LKFJLDKF LKFJLkdflkdajfk", "locked": False},
+    {"game_number": 57, "game_name": "Misty <3 Keelie 4 Evar", "players": "99/100", "status": "Hmmmmmmm", "locked": False},
+    {"game_number": 59, "game_name": "Jacob <3 Emily", "players": "5/100", "status": "S'all good", "locked": True},
 ]
 
 
