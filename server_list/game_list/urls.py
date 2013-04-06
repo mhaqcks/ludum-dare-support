@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
 from game_list import views
 
 urlpatterns = patterns(
@@ -8,4 +8,5 @@ urlpatterns = patterns(
     url(r'^status/$', views.status, name='status'),
     url(r'^download/$', views.download, name='download'),
     url(r'^games/$', views.games, name='games'),
+    url(r'^retrieve_game/$', views.retrieve_game, name='retrieve_game'),
 )

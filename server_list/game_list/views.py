@@ -58,10 +58,14 @@ JSON = [
 def games(request):
 
     content = JSON
-    game_number = request.GET['game_number']
-    game_name = request.GET['game_name'].lower()
-    players = request.GET['players'].lower()
-    locked = request.GET['locked'].lower()
+    print(request.POST)
+    print(request.GET)
+    print(request.method)
+    print(request.body)
+    game_number = request.POST['game_number']
+    game_name = request.POST['game_name'].lower()
+    players = request.POST['players'].lower()
+    locked = request.POST['locked'].lower()
     print(game_number, game_name, players, locked)
     if game_number:
         game_number = int(game_number)
@@ -99,4 +103,15 @@ def games(request):
 
     content = json.dumps({'gamedata': content})
     return HttpResponse(content, content_type='application/json')
-    #return render(request, 'gamelist.json', content_type='application/json')
+
+
+def retrieve_game(request):
+    print(request.POST)
+    error = None
+    if int(request.POST['game_number']) == -1:
+        error = 'That is an invalid password!'
+    content = json.dumps({
+        'error': error,
+        'connect_info': 'jacobvgardner.com/server/yep',
+        })
+    return HttpResponse(content, content_type='application/json')

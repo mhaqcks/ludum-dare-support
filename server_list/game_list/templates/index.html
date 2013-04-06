@@ -78,17 +78,75 @@
 
 <button id="sync" type="button" class="btn btn-info"><i class="icon-refresh icon-spin"></i> Syncronizing Content...</button>
 
+<div id="password-dialog" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="wutIsThis" aria-hidden="true">
+	<div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="myModalLabel">Please Enter The Game Password...</h3>
+	</div>
+	<form id="password-form">
+		<div class="modal-body" style="padding-bottom: 0px">
+			<input id="pass" type="password" class="input-small span4" placeholder="You Put The Password Here" />
+	  	</div>
+	  	<div class="modal-footer">
+	    	<button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	    	<button type="submit" id="doit" class="btn btn-primary">Do it</button>
+	  	</div>
+  	</form>
+</div>
+
 <script type="text/javascript" src="/static/js/ui/jquery.ui.position.js"></script>
 <script type="text/javascript">
+
+	function set_csrf(xhr, settings) {
+		console.log(settings);
+
+     	if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+     	}
+	}
+
 	$('[rel=tooltip]').tooltip();
 
 	var player_filter = 'All';
+	var lock_filter = 'All';
+	var selected_game = null;
+
+	function get_game(game_number, password) {
+
+		$.ajax({
+			url: '{% url "gamelist:retrieve_game" %}',
+			beforeSend: set_csrf,
+			data: {
+				'game_number': selected_game,
+				'password': $('#pass').val(),
+			},
+			type: 'POST',
+			success: function(data, textStatus, jqXHR) {
+				if(data.error != null) {
+					alert(data.error);
+				} else {
+					console.log(data.connect_info);
+				}
+
+			},
+		});
+	}
+
+	$('#password-form').submit(function() {
+		console.log('SUBMitTED');
+		if(selected_game) {
+			get_game(selected_game, $('#pass').val());
+			$("#password-dialog").modal('hide');
+		}
+
+	});
+
 	$('#player-filter').change(function() {
 		player_filter = $('#player-filter').val();
 		load_list();
 	});
 
-	var lock_filter = 'All';
 	$('#lock-filter > button.btn').on('click', function() {
 		lock_filter = this.innerHTML;
 		load_list();
@@ -106,17 +164,15 @@
 		timeout2 = setTimeout(load_list, 500);
 	});
 
-	$.ajaxSetup({
-		data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
-	});
-
-	function start_load()
+	function start_load(xhr, settings)
 	{
+		set_csrf(xhr, settings);	
+
 		$('#sync').stop();
 
 		$('#sync').animate({
 			top: '-5px'
-		}, 200);
+		}, 100);
 	}
 
 	function end_load()
@@ -145,6 +201,16 @@
 		if( element.locked == true )
 		{
 			icon_string = 'icon-lock';
+			button.click(function() {
+				selected_game = element.game_number;
+				$('#pass').val('');
+				$('#password-dialog').modal();
+			});
+		} else {
+			button.click(function() {
+				selected_game = element.game_number;
+				get_game(selected_game, null);
+			});
 		}
 
 		var icon = $('<i>').addClass(icon_string).text(' Connect! ');
@@ -186,7 +252,7 @@
 
 		$.ajax({
 			url: '{% url "gamelist:games" %}',
-			type: 'GET',
+			type: 'POST',
 			beforeSend: start_load,
 			complete: end_load,
 			data: filters,
@@ -195,7 +261,6 @@
 				console.log(textStatus);
 				console.log(error);
 			},
-			contentType: 'json',
 		});
 	}
 
