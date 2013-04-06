@@ -133,12 +133,11 @@
 	}
 
 	$('#password-form').submit(function() {
-		console.log('SUBMitTED');
 		if(selected_game) {
 			get_game(selected_game, $('#pass').val());
 			$("#password-dialog").modal('hide');
 		}
-
+		return false;
 	});
 
 	$('#player-filter').change(function() {
