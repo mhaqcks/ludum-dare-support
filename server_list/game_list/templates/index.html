@@ -27,15 +27,34 @@
 <table id='gametable' class='table table-striped table-bordered'>
 	<thead>
 		<tr>
-			<th class="span2" style="padding: 2px;"><input id="game-number" type="text" class="span12" placeholder="Game #" style="margin: 0px;" /></th>
-			<th class="span5" style="padding: 2px;"><input id="game-name" type="text" class="span12" placeholder="Game Name" style="margin: 0px;" /></th>
-			<th class="span2"><a href="#" rel="tooltip">Players</a></th>
-			<th class="span4">Status</th>
+			<th class="span2" style="padding: 2px;">
+				<input 
+					id="game-number" type="text" class="span12" placeholder="Game #" style="margin: 0px;" 
+					rel="tooltip" data-title="Search For A Specific Game Number" />
+			</th>
+			<th class="span5" style="padding: 2px;">
+				<input 
+					id="game-name" type="text" class="span12" placeholder="Game Name" style="margin: 0px;" 
+					rel="tooltip" data-title="Filter Games By Name" />
+			</th>
+			<th class="span2" style="padding: 2px;">
+				<select 
+					id="player-filter" style="margin: 0px;" 
+					rel="tooltip" data-title="Filter Out Full Games">
+						<option>Players</option>
+						<option>Hide Full Games</option>
+				</select>
+			</th>
+			<th class="span4">
+				<a href="#" rel="tooltip" data-title="Game Status - Probably Just a Random String">Status</a>
+			</th>
 			<th class="span3" style="padding: 2px;">
-				<div id="lock-filter" class="btn-group" data-toggle="buttons-radio">
-					<button type="button" class="btn active">All</button>
-					<button type="button" class="btn">Private</button>
-					<button type="button" class="btn">Public</button>
+				<div 
+					id="lock-filter" class="btn-group" data-toggle="buttons-radio"
+					rel="tooltip" data-title="Filter Out Public/Private Games">
+						<button type="button" class="btn active">All</button>
+						<button type="button" class="btn">Private</button>
+						<button type="button" class="btn">Public</button>
 				</div>
 			</th>
 		</tr>
@@ -44,34 +63,29 @@
 	</tbody>
 </table>
 
+	<style type="text/css">
+		#sync {
+			position: fixed;
+			top: -40px;
+			left: 50%;
+			height: 40px;
+			width: 500px;
+			margin-left: -250px;
+		};
+	</style>
 
-	<script type="text/javascript">
-	$('[rel=tooltip]').tooltip({
-		title: 'Click For Filter Options',
-		placement: 'bottom',
-	});
+</div>
 
-	var player_filter_group = $('<div id="player-filter" data-toggle="buttons-radio">').addClass('btn-group-vertical')
-	var btn1 = $('<button type="button">').addClass('btn active span12').text('All');
-	var btn2 = $('<button type="button">').addClass('btn span12').text('Hide Full Games');
+<button id="sync" type="button" class="btn btn-info"><i class="icon-refresh icon-spin"></i> Syncronizing Content...</button>
+
+<script type="text/javascript" src="/static/js/ui/jquery.ui.position.js"></script>
+<script type="text/javascript">
+	$('[rel=tooltip]').tooltip();
 
 	var player_filter = 'All';
-	function filter_update() {
-		player_filter = this.innerHTML;
+	$('#player-filter').change(function() {
+		player_filter = $('#player-filter').val();
 		load_list();
-	}
-
-	btn1.on('click', filter_update)
-	btn2.on('click', filter_update)
-	player_filter_group.append(btn1);
-	player_filter_group.append(btn2);
-
-	$('[rel=tooltip]').popover({
-		title: 'Filter Options',
-		placement: 'top',	
-		html: 'true',
-		trigger: 'click',
-		content: player_filter_group
 	});
 
 	var lock_filter = 'All';
@@ -98,12 +112,20 @@
 
 	function start_load()
 	{
+		$('#sync').stop();
 
+		$('#sync').animate({
+			top: '-5px'
+		}, 200);
 	}
 
 	function end_load()
 	{
+		$('#sync').stop();
 
+		$('#sync').animate({
+			top: '-40px'
+		});
 	}
 
 	function add_row(element, index, array)
@@ -179,6 +201,7 @@
 
 	load_list();
 
-	</script>
-</div>
+</script>
+
+
 {% endblock %}
