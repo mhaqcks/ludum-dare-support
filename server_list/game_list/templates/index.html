@@ -27,12 +27,12 @@
 <table id='gametable' class='table table-striped table-bordered'>
 	<thead>
 		<tr>
-			<th class="span2" style="padding: 2px;"><input type="text" class="span12" placeholder="Game Number" style="margin: 0px;" /></th>
-			<th class="span5" style="padding: 2px;"><input type="text" class="span12" placeholder="Game Name" style="margin: 0px;" /></th>
-			<th class="span2">Players</th>
+			<th class="span2" style="padding: 2px;"><input id="game-number" type="text" class="span12" placeholder="Game #" style="margin: 0px;" /></th>
+			<th class="span5" style="padding: 2px;"><input id="game-name" type="text" class="span12" placeholder="Game Name" style="margin: 0px;" /></th>
+			<th class="span2"><a href="#" rel="tooltip">Players</a></th>
 			<th class="span4">Status</th>
 			<th class="span3" style="padding: 2px;">
-				<div class="btn-group" data-toggle="buttons-radio">
+				<div id="lock-filter" class="btn-group" data-toggle="buttons-radio">
 					<button type="button" class="btn active">All</button>
 					<button type="button" class="btn">Private</button>
 					<button type="button" class="btn">Public</button>
@@ -46,6 +46,46 @@
 
 
 	<script type="text/javascript">
+	$('[rel=tooltip]').tooltip({
+		title: 'Click For Filter Options',
+		placement: 'bottom',
+	});
+
+	$('[rel=tooltip]').popover({
+		title: 'Filter Options',
+		placement: 'top',	
+		html: 'true',
+		trigger: 'click',
+		content: '\
+			<div id="player-filter" class="btn-group-vertical" data-toggle="buttons-radio">\
+				<button type="button" class="btn active span12">All</button>\
+				<button type="button" class="btn span12">Hide Full Games</button>\
+			</div>'
+	});
+
+	var lock_filter = 'All';
+	$('#lock-filter > button.btn').on('click', function() {
+		lock_filter = this.innerHTML;
+		load_list();
+	});
+
+	var player_filter = 'All';
+	$('#player-filter > button.btn').on('click', function() {
+		player_filter = this.innerHTML;
+		load_list();
+	});
+
+	var timeout1 = 0;
+	$('#game-number').keyup(function() {
+		clearTimeout(timeout1);
+		timeout1 = setTimeout(load_list, 500);
+	});
+
+	var timeout2 = 0;
+	$('#game-name').keyup(function() {
+		clearTimeout(timeout2);
+		timeout2 = setTimeout(load_list, 500);
+	});
 
 	function start_load()
 	{
@@ -94,23 +134,23 @@
 
 	function load_list()
 	{
-		var PLAYER_FILTER = {
-			ALL: -1,
-			NOT_FULL: -2,
-		};
+		$('#gametable > tbody').empty();
 
-		var PROTECTED_FILTER = {
-			ALL: 0,
-			LOCKED: 1,
-			UNLOCKED: 2,
-		};
+		var game_number = $('#game-number').val();
+		if( game_number == '' )
+			game_number = null;
+
+		var game_name = $('#game-name').val();
+		if( game_name == '' )
+			game_name = null;
+
 
 		var filters = {
-			'game_number': null,
-			'game_name': null,
-			'players': PLAYER_FILTER.ALL,
+			'game_number': game_number,
+			'game_name': game_name,
+			'players': player_filter,
 			'status': null,
-			'locked': PROTECTED_FILTER.ALL,
+			'locked': lock_filter,
 		};
 
 		$.ajax({
