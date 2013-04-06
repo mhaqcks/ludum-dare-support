@@ -25,7 +25,18 @@ class RPCHandler(BaseHTTPRequestHandler):
                 self.wfile.write('This command has not been deemed safe by the overlords!')
             else:
                 reply = self.functions[output['method']](**output['args'])
-                self.wfile.write('jsonCallback({0})'.format(json.loads(reply)))
+                if reply is None:
+                    reply = ['Success']
+                elif isinstance(reply, str):
+                    reply = [reply]
+
+                assert(
+                    isinstance(reply, list) or
+                    isinstance(reply, dict) or
+                    isinstance(reply, tuple))
+
+                print(reply)
+                self.wfile.write('jsonCallback({0})'.format(json.dumps(reply)))
 
         else:
             self.wfile.write("No Command Recieved!\nI'll just wait here.")
