@@ -51,27 +51,32 @@
 		placement: 'bottom',
 	});
 
+	var player_filter_group = $('<div id="player-filter" data-toggle="buttons-radio">').addClass('btn-group-vertical')
+	var btn1 = $('<button type="button">').addClass('btn active span12').text('All');
+	var btn2 = $('<button type="button">').addClass('btn span12').text('Hide Full Games');
+
+	var player_filter = 'All';
+	function filter_update() {
+		player_filter = this.innerHTML;
+		load_list();
+	}
+
+	btn1.on('click', filter_update)
+	btn2.on('click', filter_update)
+	player_filter_group.append(btn1);
+	player_filter_group.append(btn2);
+
 	$('[rel=tooltip]').popover({
 		title: 'Filter Options',
 		placement: 'top',	
 		html: 'true',
 		trigger: 'click',
-		content: '\
-			<div id="player-filter" class="btn-group-vertical" data-toggle="buttons-radio">\
-				<button type="button" class="btn active span12">All</button>\
-				<button type="button" class="btn span12">Hide Full Games</button>\
-			</div>'
+		content: player_filter_group
 	});
 
 	var lock_filter = 'All';
 	$('#lock-filter > button.btn').on('click', function() {
 		lock_filter = this.innerHTML;
-		load_list();
-	});
-
-	var player_filter = 'All';
-	$('#player-filter > button.btn').on('click', function() {
-		player_filter = this.innerHTML;
 		load_list();
 	});
 
@@ -85,6 +90,10 @@
 	$('#game-name').keyup(function() {
 		clearTimeout(timeout2);
 		timeout2 = setTimeout(load_list, 500);
+	});
+
+	$.ajaxSetup({
+		data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
 	});
 
 	function start_load()
@@ -155,6 +164,7 @@
 
 		$.ajax({
 			url: '{% url "gamelist:games" %}',
+			type: 'GET',
 			beforeSend: start_load,
 			complete: end_load,
 			data: filters,
