@@ -201,6 +201,7 @@
 		if( element.locked == true )
 		{
 			icon_string = 'icon-lock';
+			row.addClass('warning');
 			button.click(function() {
 				selected_game = element.game_number;
 				$('#pass').val('');
@@ -211,6 +212,13 @@
 				selected_game = element.game_number;
 				get_game(selected_game, null);
 			});
+		}
+
+
+		var players_info = element.players.split('/');
+		if( players_info[0] == players_info[1] ) {
+			row.removeClass('warning');
+			row.addClass('error');
 		}
 
 		var icon = $('<i>').addClass(icon_string).text(' Connect! ');

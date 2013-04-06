@@ -52,6 +52,7 @@ JSON = [
     {"game_number": 55, "game_name": "Keelie", "players": "3/3", "status": "LKFJLDKF LKFJLkdflkdajfk", "locked": False},
     {"game_number": 57, "game_name": "Misty <3 Keelie 4 Evar", "players": "99/100", "status": "Hmmmmmmm", "locked": False},
     {"game_number": 59, "game_name": "Jacob <3 Emily", "players": "5/100", "status": "S'all good", "locked": True},
+    {"game_number": 10, "game_name": "Max max max max max max", "players": "5/5", "status": "S'all good", "locked": True},
 ]
 
 
