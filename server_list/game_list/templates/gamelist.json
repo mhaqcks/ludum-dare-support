@@ -1,0 +1,18 @@
+{
+	"gamedata": [
+		{
+			"game_number": -1, 
+			"game_name": "This is a game name!!",
+			"players": "2/5",
+			"status": "Particularly Slutty",
+			"locked": true
+		},
+		{
+			"game_number": -2, 
+			"game_name": "This is not a game name!!",
+			"players": "5/5",
+			"status": "Ummm... Good, I guess.",
+			"locked": false 
+		}
+	]
+}
