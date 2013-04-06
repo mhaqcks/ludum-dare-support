@@ -41,3 +41,7 @@ def download(request):
     }
 
     return render(request, 'download.html', context)
+
+
+def games(request):
+    return render(request, 'gamelist.json', content_type='application/json')

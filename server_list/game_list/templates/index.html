@@ -24,39 +24,111 @@
 
 <!-- Example row of columns -->
 <div class="row-fluid">
-<table class='table table-striped'>
+<table id='gametable' class='table table-striped table-bordered'>
 	<thead>
 		<tr>
-			<th class="span2">Game Number</th>
-			<th class="span5">Game Name</th>
+			<th class="span2" style="padding: 2px;"><input type="text" class="span12" placeholder="Game Number" style="margin: 0px;" /></th>
+			<th class="span5" style="padding: 2px;"><input type="text" class="span12" placeholder="Game Name" style="margin: 0px;" /></th>
 			<th class="span2">Players</th>
 			<th class="span4">Status</th>
-			<th class="span3">Connect</th>
+			<th class="span3" style="padding: 2px;">
+				<div class="btn-group" data-toggle="buttons-radio">
+					<button type="button" class="btn active">All</button>
+					<button type="button" class="btn">Private</button>
+					<button type="button" class="btn">Public</button>
+				</div>
+			</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>-1</td>
-			<td>Example Row</td>
-			<td>2/4</td>
-			<td>Good?</td>
-			<td><button class="btn btn-info span12"><i class="icon-lock"></i> Connect!</button></td>
-		</tr>	
-		<tr>
-			<td>-2</td>
-			<td>Another Example</td>
-			<td>1/4</td>
-			<td>Good?</td>
-			<td><button class="btn btn-info span12"><i class="icon-unlock"></i> Connect!</button></td>
-		</tr>	
-		<tr>
-			<td>-3</td>
-			<td>Yet another won.</td>
-			<td>4/4</td>
-			<td>Good?</td>
-			<td><button class="btn btn-info span12"><i class="icon-unlock"></i> Connect!</button></td>
-		</tr>	
 	</tbody>
 </table>
+
+
+	<script type="text/javascript">
+
+	function start_load()
+	{
+
+	}
+
+	function end_load()
+	{
+
+	}
+
+	function add_row(element, index, array)
+	{
+		var row = $('<tr>');
+
+		var game_number = $('<td>').text(element.game_number);
+		var game_name = $('<td>').text(element.game_name);
+		var players = $('<td>').text(element.players);
+		var status = $('<td>').text(element.status);
+		var locked = $('<td>');
+
+		var icon_string = 'icon-unlock';
+
+		var button = $('<button>').addClass('btn btn-info span12');
+
+		if( element.locked == true )
+		{
+			icon_string = 'icon-lock';
+		}
+
+		var icon = $('<i>').addClass(icon_string).text(' Connect! ');
+		button.append(icon);
+		button.append($('<i>').addClass(icon_string));
+		locked.append(button);
+
+		row.append(game_number, game_name, players, status, locked);
+
+		$('#gametable > tbody:last').append(row);
+
+	}
+
+	function populate_table(data, textStatus, jqXHR)
+	{
+		data.gamedata.forEach(add_row);
+	}
+
+	function load_list()
+	{
+		var PLAYER_FILTER = {
+			ALL: -1,
+			NOT_FULL: -2,
+		};
+
+		var PROTECTED_FILTER = {
+			ALL: 0,
+			LOCKED: 1,
+			UNLOCKED: 2,
+		};
+
+		var filters = {
+			'game_number': null,
+			'game_name': null,
+			'players': PLAYER_FILTER.ALL,
+			'status': null,
+			'locked': PROTECTED_FILTER.ALL,
+		};
+
+		$.ajax({
+			url: '{% url "gamelist:games" %}',
+			beforeSend: start_load,
+			complete: end_load,
+			data: filters,
+			success: populate_table,
+			error: function(jqXHR, textStatus, error) {
+				console.log(textStatus);
+				console.log(error);
+			},
+			contentType: 'json',
+		});
+	}
+
+	load_list();
+
+	</script>
 </div>
 {% endblock %}
