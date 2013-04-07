@@ -357,7 +357,11 @@
 		}
 
 		connection.onclose = function() {
-			add_notification('no-connection', 'Connection could not be established!', 'Please make sure you are running the <a href="{% url 'gamelist:download' %}">game client</a>.', 'alert-error');
+			add_notification(
+				'no-connection', 
+				'Connection could not be established!', 
+				'Please make sure you are running the <a href="{% url 'gamelist:download' %}">game client</a>.', 
+				'alert-error');
 			if( connected_to_client == true ) {
 				console.log('Connection Lost');
 			}
