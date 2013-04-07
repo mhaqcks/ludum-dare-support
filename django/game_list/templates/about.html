@@ -30,139 +30,19 @@ Team Bonanza is an elite group of english majors, theatre majors, history majors
 </p>
 
 </div>
+
+{% for chunk in bios %}
 <div class="row-fluid about">
-	<div class="span4">
-		<img src="/static/about/gardnerj.png" class="img-polaroid" />
-		<h2>Jacob V. Gardner</h2>
-		<h4>Project Lead, Sragon Dlayer</h4>
-		<hr />
-		<p>Born and raised in the lost city of Atlantis, Jacob represents SEVERAL hours of research and ingenuity.  Currently in the employ of Garmin International, Inc., he writes software that goes into aircraft displays and develops tools to assist developers in increasing their testing efficiency.   He is a graduate of Computer Science from Missouri University of Science & Technology, formerly Unversity of Missouri - Rolla, formerly University of Missouri at Rolla, formerly the Missouri School of Mines and Metallurgy. In his free time, he feeds the hungry (himself), watches an embarassingly large amount of Netflix, and complains about Microsoft and EA Games.  He also loves dogs.</p>
-	</div>
-	<div class="span4">
-		<img src="/static/about/gannone.png" class="img-polaroid" />
-		<h2>Emily M. Gannon</h2>
-		<h4>Writer, Actress, Alpha Tester</h4>
-		<hr />
-		<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis nulla turpis, mollis nec tristique id, condimentum quis risus. Sed aliquet neque ut purus vestibulum rutrum. Morbi iaculis dui quis nisl egestas lacinia. In metus libero, auctor et ultricies sed, venenatis auctor augue. Phasellus bibendum, sem nec dapibus pulvinar, mi elit varius mauris, ac iaculis tellus nibh id justo. </p>
-	</div>
-	<div class="span4">
-		<img src="/static/about/reynoldsn.png" class="img-polaroid" />
-		<h2>Nathan T. Reynolds</h2>
-		<h4>Publisher, Pterodactyl</h4>
-		<hr />
-		<p>Cras consectetur lacinia varius. Aliquam et erat id urna malesuada malesuada consequat vitae diam. Vestibulum ullamcorper faucibus velit id porta. Mauris nulla nisi, consectetur sed ultrices et, commodo vel elit. Nunc vulputate pharetra massa a commodo. In hac habitasse platea dictumst. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed volutpat posuere magna et commodo. Proin venenatis vestibulum dolor, sit amet feugiat nulla ultrices id. Curabitur enim ipsum, rutrum ac euismod ut, mollis eget urna.  </p>
-	</div>
+	{% for bio in chunk %}
+		<div class="span4">
+			<img src="/static/about/{{ bio.img }}" />
+			<h2>{{ bio.name }}</h2>
+			<h4>{{ bio.title }}</h4>
+			<hr />
+			<p>{{ bio.desc }}</p>
+		</div>
+	{% endfor %}
 </div>
+{% endfor %}
 
-<div class="row-fluid about">
-	<div class="span4">
-		<img src="/static/about/jansenk.png" class="img-polaroid" />
-		<h2>Kaitlynn E. Jansen</h2>
-		<h4>Mathematics, Wiles</h4>
-		<hr />
-		<p> This page is required to post a comment. Each arc of the main lake, but grief. Lion's soup, it's the author's, not here too. Now a hotel More vehicles to large porch systems. Contact information for the impact your investment. Contact Us About this afternoon before the tank. Welcome to hendrerit bottom of the column temperature, before the time in the convenience of life. More times than today's official website. Admin Home My vehicles and Japan's price Community. As long as she is with child by fear of the yeast needs. It's more dynamic. Contact. </p>
-	</div>
-	<div class="span4">
-		<img src="/static/about/schmittr.png" class="img-polaroid" />
-		<h2>Clayton R. Schmitt</h2>
-		<h4>Creative Director, Miracle Child</h4>
-		<hr />
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel lorem nulla. Aliquam scelerisque erat enim, a porttitor est. Nunc lectus massa, ullamcorper eget fermentum a, dignissim eu dolor. Donec nec neque metus, ac vehicula erat. Maecenas quis mi quis arcu dictum hendrerit luctus egestas ligula. Aliquam non sagittis leo. Sed rutrum purus nec libero elementum a sollicitudin augue dictum. In vel orci ac orci porta rutrum. Etiam id cursus quam. Sed sit amet sem in mi iaculis convallis at eget felis. Aliquam erat volutpat. Vestibulum luctus malesuada vestibulum. Maecenas sapien libero, dictum convallis vulputate vel, dictum at lorem. Donec lacinia turpis non purus pretium nec viverra mauris lobortis. </p>
-	</div>
-	<div class="span4">
-		<img src="/static/about/sandersb.png" class="img-polaroid" />
-		<h2>Bobby H. Sanders</h2>
-		<h4>Developer, Person, Star</h4>
-		<hr />
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel lorem nulla. Aliquam scelerisque erat enim, a porttitor est. Nunc lectus massa, ullamcorper eget fermentum a, dignissim eu dolor. Donec nec neque metus, ac vehicula erat. Maecenas quis mi quis arcu dictum hendrerit luctus egestas ligula. Aliquam non sagittis leo. Sed rutrum purus nec libero elementum a sollicitudin augue dictum. In vel orci ac orci porta rutrum. Etiam id cursus quam. Sed sit amet sem in mi iaculis convallis at eget felis. Aliquam erat volutpat. Vestibulum luctus malesuada vestibulum. Maecenas sapien libero, dictum convallis vulputate vel, dictum at lorem. Donec lacinia turpis non purus pretium nec viverra mauris lobortis. </p>
-	</div>
-</div>
-
-<div class="row-fluid about">
-	<div class="span4">
-		<img src="/static/about/harterj.png" class="img-polaroid" />
-		<h2>James R. Harter III</h2>
-		<h4>Musician, Jim Harter Impersonator</h4>
-		<hr />
-		<p>Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo. </p>
-	</div>
-	<div class="span4">
-		<img src="/static/about/grobk.png" class="img-polaroid" />
-		<h2>Kevin A. Grob</h2>
-		<h4>Lava Lamp</h4>
-		<hr />
-		<p>Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo. </p>
-	</div>
-
-	<div class="span4">
-		<img src="/static/about/eisenbraunm.png" class="img-polaroid" />
-		<h2>Max T. Eisenbraun</h2>
-		<h4>Software Lead, Beard</h4>
-		<hr />
-		<p>Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo. </p>
-	</div>
-</div>
-
-<div class="row-fluid about">
-	<div class="span4">
-		<img src="/static/about/wrights.png" class="img-polaroid" />
-		<h2>Scott A. Wright</h2>
-		<h4>Mock Interviewer</h4>
-		<hr />
-		<p>Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo. </p>
-	</div>
-
-	<div class="span4">
-		<img src="/static/about/lucza.png" class="img-polaroid" />
-		<h2>Adam S. Lucz</h2>
-		<h4>Drummer Dude, Mocap Specialist</h4>
-		<hr />
-		<p>Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo. </p>
-	</div>
-
-	<div class="span4">
-		<img src="/static/about/colemant.png" class="img-polaroid" />
-		<h2>Thomas S. Coleman</h2>
-		<h4>Art Consultant, Consumer</h4>
-		<hr />
-		<p>Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo. </p>
-	</div>
-</div>
-
-<div class="row-fluid about">
-	<div class="span4">
-		<img src="/static/about/kelloggj.png" class="img-polaroid" />
-		<h2>Justin M. Kellogg</h2>
-		<h4>Specialist</h4>
-		<hr />
-		<p>Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo. </p>
-	</div>
-
-	<div class="span4">
-		<img src="/static/about/leez.png" class="img-polaroid" />
-		<h2>Zach K. Lee</h2>
-		<h4>Remote Mocap Director</h4>
-		<hr />
-		<p>Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo. </p>
-	</div>
-
-	<div class="span4">
-		<img src="/static/about/frisbyj.png" class="img-polaroid" />
-		<h2>Jared P. Frisby</h2>
-		<h4>Lulz</h4>
-		<hr />
-		<p>Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo. </p>
-	</div>
-</div>
-
-
-<div class="row-fluid about">
-	<div class="span4">
-		<img src="/static/about/mahonj.png" class="img-polaroid" />
-		<h2>James Q. Mahon</h2>
-		<h4>Mixed Martial Barfighter</h4>
-		<hr />
-		<p>Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo. </p>
-	</div>
-</div>
 {% endblock %}

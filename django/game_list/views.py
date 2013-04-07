@@ -3,8 +3,17 @@ from django.http import HttpResponse
 import os
 import random
 import json
+import bios
 
 FILE_ROOT = os.path.normpath(os.path.dirname(os.path.realpath(__file__)))
+
+
+def chunks(l, n):
+    """ Yield successive n-sized chunks from l.
+    """
+    print(l)
+    for i in range(0, len(l), n):
+        yield l[i:i+n]
 
 
 def home(request):
@@ -17,9 +26,13 @@ def home(request):
 
 
 def about(request):
+
+    random.shuffle(bios.BIOS)
     context = {
         'project': 'Ludum Dare Team Bonanza',
+        'bios': chunks(bios.BIOS, 3),
     }
+    print(context['bios'])
 
     return render(request, 'about.html', context)
 
