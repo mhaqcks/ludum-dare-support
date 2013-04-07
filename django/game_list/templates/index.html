@@ -72,8 +72,38 @@
 		height: 40px;
 		width: 500px;
 		margin-left: -250px;
-	};
+	}
+
+	.alerts {
+		z-index: 2000;
+		position: fixed;
+		width: 100%;
+		left: 0;
+		bottom: 0px;
+		margin: 0px;
+	}
+
+	.alert {
+		margin: 0;
+	}
+
+	.new-alert {
+		left: -100%;
+		position: relative;
+	}
+
 </style>
+
+
+
+<div class="alerts" id="alerts">
+<span id="alert-header"></span>
+<!--
+	<div class="alert alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Warning!</strong> Best check yo self, you're not looking too good. </div>
+	<div class="alert alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Warning!</strong> Best check yo self, you're not looking too good. </div>
+-->
+</div>
+
 
 <button id="sync" type="button" class="btn btn-info"><i class="icon-refresh icon-spin"></i> Syncronizing Content...</button>
 
@@ -95,6 +125,44 @@
 
 <script type="text/javascript" src="/static/js/ui/jquery.ui.position.js"></script>
 <script type="text/javascript">
+	var player_filter = 'All';
+	var lock_filter = 'All';
+	var selected_game = null;
+	var websockets_enabled = true;
+	var connected_to_client = false;
+
+	function remove_notification(id) {
+		$('#' + id).animate({
+			left: '100%'
+		}, 600, 'swing', function() {
+			$('#' + id).remove();	
+		});
+	}
+
+	function add_notification(id, title, message, style) {
+
+		if( $('#' + id).length != 0 )
+			return;
+
+		new_alert = $('<div class="alert new-alert">').addClass(style);
+		new_alert.attr('id', id);
+
+		close_btn = $('<button type="button" class="close" data-dismiss="alert">').html('&times;');
+		new_alert.append(close_btn);
+
+		title_txt = $('<strong>').html(title + ' ');
+		new_alert.append(title_txt);
+
+		msg_txt = $('<span>').html(message);
+		new_alert.append(msg_txt);
+
+		$('#alert-header').after(new_alert);
+
+		new_alert.animate({
+			left: '0'
+	 	}, 800);
+	}
+
 
 	function set_csrf(xhr, settings) {
 		console.log(settings);
@@ -106,11 +174,6 @@
 	}
 
 	$('[rel=tooltip]').tooltip();
-
-	var player_filter = 'All';
-	var lock_filter = 'All';
-	var selected_game = null;
-
 	function get_game(game_number, password) {
 
 		$.ajax({
@@ -209,6 +272,7 @@
 			button.click(function() {
 				selected_game = element.game_number;
 				get_game(selected_game, null);
+				//add_notification('example-alert', 'Title', 'Message', 'alert-error');
 			});
 		}
 
@@ -230,14 +294,12 @@
 
 	}
 
-	function populate_table(data, textStatus, jqXHR)
-	{
+	function populate_table(data, textStatus, jqXHR) {
 		$('#gametable > tbody').empty();
 		data.gamedata.forEach(add_row);
 	}
 
-	function load_list()
-	{
+	function load_list() {
 
 		var game_number = $('#game-number').val();
 		if( game_number == '' )
@@ -270,23 +332,50 @@
 		});
 	}
 
+	var websocket_timer = 0;
+	var connection = 0;
 	function attempt_connection() {
-		var connection = new WebSocket('ws://localhost:8888/');
+		websocket_timer = setTimeout(attempt_connection, 1500);
+
+		if( connected_to_client == true )
+			return;
+
+		connection = new WebSocket('ws://localhost:65456/');
+
 		connection.onopen = function() {
+			connected_to_client = true;	
+			remove_notification('no-connection');
 			connection.send('Ping');
 		}
+
 		connection.onerror = function(error) {
 			console.log(error);
 		}
+
 		connection.onmessage = function(e) {
 			console.log('Server: ' + e.data);
+		}
+
+		connection.onclose = function() {
+			add_notification('no-connection', 'Connection could not be established!', 'Please make sure you are running the <a href="{% url 'gamelist:download' %}">game client</a>.', 'alert-error');
+			if( connected_to_client == true ) {
+				console.log('Connection Lost');
+			}
+			connected_to_client = false;
 		}
 	}
 
 
 	$(document).ready(function() {
+		if( typeof(WebSocket) != 'function' ) {
+			websockets_enabled = false; // :(
+		}
+
 		load_list();
-		attempt_connection();
+
+		if( websockets_enabled ) {
+			attempt_connection();
+		}
 	});
 
 </script>
