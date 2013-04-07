@@ -270,7 +270,24 @@
 		});
 	}
 
-	load_list();
+	function attempt_connection() {
+		var connection = new WebSocket('ws://localhost:8888/');
+		connection.onopen = function() {
+			connection.send('Ping');
+		}
+		connection.onerror = function(error) {
+			console.log(error);
+		}
+		connection.onmessage = function(e) {
+			console.log('Server: ' + e.data);
+		}
+	}
+
+
+	$(document).ready(function() {
+		load_list();
+		attempt_connection();
+	});
 
 </script>
 
