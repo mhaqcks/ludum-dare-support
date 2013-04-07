@@ -35,7 +35,7 @@ Team Bonanza is an elite group of english majors, theatre majors, history majors
 <div class="row-fluid about">
 	{% for bio in chunk %}
 		<div class="span4">
-			<img src="/static/about/{{ bio.img }}" />
+			<img src="/static/about/{{ bio.img }}" class="img-circle img-polaroid" />
 			<h2>{{ bio.name }}</h2>
 			<h4>{{ bio.title }}</h4>
 			<hr />
