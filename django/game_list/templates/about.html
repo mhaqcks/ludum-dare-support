@@ -21,6 +21,20 @@
 			margin-left: auto;
 			margin-right: auto;
 		}
+
+		.slider {
+			display: none;
+		}
+		
+		.collapseSlider{
+			display: none;
+		}
+		.sliderExpanded .collapseSlider {
+			display: block;
+		}
+		.sliderExpanded .expandSlider {
+			display: none;
+		}	
 	</style>
 
 	<div class="jumbotron">
@@ -38,9 +52,30 @@
 				<h2>{{ bio.name }}</h2>
 				<h4>{{ bio.title }}</h4>
 				<hr />
-				<p>{{ bio.desc }}</p>
+				<p>{{ bio.desc|safe }}</p>
 			</div>
 		{% endfor %}
 	</div>
 	{% endfor %}
+
+
+<script type="text/javascript">
+	function toggleSlides(){
+		$('.toggler').click(function(e){
+			var id=$(this).attr('id');
+			var widgetId=id.substring(id.indexOf('-')+1,id.length);
+			$('#'+widgetId).slideToggle();
+			$(this).toggleClass('sliderExpanded');
+			$('.closeSlider').click(function(){
+					$(this).parent().hide('slow');
+					var relatedToggler='toggler-'+$(this).parent().attr('id');
+					$('#'+relatedToggler).removeClass('sliderExpanded');
+			});
+		});
+	};
+	$(function(){
+		toggleSlides();
+	});
+</script>
+
 {% endblock %}

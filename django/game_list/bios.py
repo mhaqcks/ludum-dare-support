@@ -42,7 +42,17 @@ BobbySanders = Bio(
     'Bobby H. Sanders',
     'Developer, Person, Star',
     'sandersb.png',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel lorem nulla. Aliquam scelerisque erat enim, a porttitor est. Nunc lectus massa, ullamcorper eget fermentum a, dignissim eu dolor. Donec nec neque metus, ac vehicula erat. Maecenas quis mi quis arcu dictum hendrerit luctus egestas ligula. Aliquam non sagittis leo. Sed rutrum purus nec libero elementum a sollicitudin augue dictum. In vel orci ac orci porta rutrum. Etiam id cursus quam. Sed sit amet sem in mi iaculis convallis at eget felis. Aliquam erat volutpat. Vestibulum luctus malesuada vestibulum. Maecenas sapien libero, dictum convallis vulputate vel, dictum at lorem. Donec lacinia turpis non purus pretium nec viverra mauris lobortis.')
+    '''Bobby H. Sanders took her out, it was Friday night, Bobby H. Sanders wore cologne to get the feeling right. Bobby H. Sanders started making out and she took off Bobby H. Sanders's pants But then Bobby H. Sanders turned on the TV And that's about the time that she walked away from Bobby H. Sanders. Nobody likes Bobby H. Sanders when Bobby H. Sanders's 23 And are still more amused by TV shows What the hell is ADD? Bobby H. Sanders's friends say Bobby H. Sanders should act Bobby H. Sanders's age. What's Bobby H. Sanders's age again? What's Bobby H. Sanders's age again?
+
+        <span id="toggler-bobbySlide" class="toggler"><span class="expandSlider">More....</span><span class="collapseSlider"></span></span>
+
+        <span class="slider" id="bobbySlide">
+        Then later on, on the drive home Bobby H. Sanders called her mom from a pay phone Bobby H. Sanders said Bobby H. Sanders was the cops And your husband's in jail Bobby H. Sanders looks down on sodomyAnd that's about the time that bitch hung up on Bobby H. Sanders. Nobody likes Bobby H. Sanders when Bobby H. Sanders's 23 And is still more amused by prank phone calls What the hell is caller ID? Bobby H. Sanders's friends say Bobby H. Sanders should act Bobby H. Sanders's age What's Bobby H. Sanders's age again? What's Bobby H. Sanders's age again? And that's about the time she walked away from Bobby H. Sanders Nobody likes Bobby H. Sanders when Bobby H. Sanders's 23 And Bobby H. Sanders still acts like Bobby H. Sanders's in Freshman year What the hell is wrong with Bobby H. Sanders? Bobby H. Sanders's friends say Bobby H. Sanders should act Bobby H. Sanders's age What's Bobby H. Sanders's age again? What's Bobby H. Sanders's age again? That's about the time she broke up with Bobby H. Sanders No one should take Bobby H. Sanders so seriously With many years ahead to fall in line Why would you wish that on Bobby H. Sanders? Bobby H. Sanders never wants to act Bobby H. Sanders's age What's Bobby H. Sanders's age again? What's Bobby H. Sanders's age again? What's Bobby H. Sanders's age again?
+
+        <span class="closeSlider">Close</span>
+        </span>
+
+        ''')
 
 JimHarter = Bio(
     'James R. Harter III',
