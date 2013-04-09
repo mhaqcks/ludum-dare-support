@@ -7,6 +7,7 @@ class EchoWebSocket(websocket.WebSocketHandler):
         print("WebSocket opened")
 
     def on_message(self, message):
+        print(message)
         self.write_message(u"You said: " + message)
 
     def on_close(self):

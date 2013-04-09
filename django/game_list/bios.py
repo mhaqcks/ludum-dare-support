@@ -60,7 +60,7 @@ MaxEisenbraun = Bio(
     'Max T. Eisenbraun',
     'Software Lead, Beard',
     'eisenbraunm.png',
-    'Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo.')
+    'Понякога брадата е признак на социален или религиозен статус.Тя често придава не само обем,но и царственост на лицето,като не рядко символизира сила,свързана с мъдростта.Тя била присъща на боговете-отци:Зевс,Посейдон,Плутон,Вотан и др. В древен Египет само фараоните имали право да носят брада,но това била фалшива брада във формат на фунийка,привързвана с връвчици, която се закрепвала зад ушите.Там тя имала чисто символично значение , като символ на сила и власт и дори цариците я носели. He also eagerly awaits Half-Life 3.')
 
 ScottWright = Bio(
     'Scott A. Wright',
@@ -117,7 +117,6 @@ BIOS = [
     ScottWright,
     AdamLucz,
     TubbyTom,
-    JustinKellogg,
     ZachLee,
     JaredFrisby,
     JimMahon,

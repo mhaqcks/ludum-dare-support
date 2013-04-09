@@ -315,7 +315,9 @@
 		connection.onopen = function() {
 			connected_to_client = true;	
 			remove_notification('no-connection');
-			connection.send('Ping');
+			connection.send(JSON.stringify({
+				command: 'this is a command'
+			}));
 		}
 
 		connection.onerror = function(error) {
@@ -338,7 +340,6 @@
 			connected_to_client = false;
 		}
 	}
-
 
 	$(document).ready(function() {
 		if( typeof(WebSocket) != 'function' ) {
