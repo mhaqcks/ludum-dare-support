@@ -30,7 +30,7 @@ KaitlynnJansen = Bio(
     'Kaitlynn E. Jansen',
     'Mathematics, Wiles',
     'jansenk.png',
-    "This page is required to post a comment. Each arc of the main lake, but grief. Lion's soup, it's the author's, not here too. Now a hotel More vehicles to large porch systems. Contact information for the impact your investment. Contact Us About this afternoon before the tank. Welcome to hendrerit bottom of the column temperature, before the time in the convenience of life. More times than today's official website. Admin Home My vehicles and Japan's price Community. As long as she is with child by fear of the yeast needs. It's more dynamic. Contact.")
+    "Wiles is a part-time mathematics instructor, part-time connoisseur of half a bottle of Smirnoff, and full-time Hooked on Phonics enthusiast. Her hobbies include cleaning up after her roommates, setting fire to descriptions of herself, and watching Food Network. Seriously, how do they make those paninis? Those people are sandwich magicians. After she graduates, you'll find her cuddled up with her dog Watson, who’s a good boy. Yes he iiiis. People may think she’s a blanket hog, but in fact, she just likes to cuddle. In a couple of years, she'll settle in Catan, but until then - DEAR GOD I'M ON FIRE SHIT SHIT SHIT")
 
 RyanSchmitt = Bio(
     'Clayton R. Schmitt',
