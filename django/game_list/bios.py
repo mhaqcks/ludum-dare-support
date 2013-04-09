@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 
 class Bio(object):
     def __init__(self, name, title, img, desc):
