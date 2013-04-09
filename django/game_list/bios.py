@@ -30,7 +30,7 @@ KaitlynnJansen = Bio(
     'Kaitlynn E. Jansen',
     'Mathematics, Wiles',
     'jansenk.png',
-    "Wiles is a part-time mathematics instructor, part-time connoisseur of half a bottle of Smirnoff, and full-time <i>Hooked on Phonics</i> enthusiast. Her hobbies include cleaning up after her roommates, setting fire to descriptions of herself, and watching Food Network. Seriously, how do they make those paninis? Those people are sandwich magicians. After she graduates, you'll find her cuddled up with her dog Watson, who’s a good boy. Yes he iiiis. People may think she’s a blanket hog, but in fact, she just likes to cuddle. In a couple of years, she'll settle in Catan, but until then - DEAR GOD I'M ON FIRE SHIT SHIT SHIT")
+    "Wiles is a part-time mathematics instructor, part-time connoisseur of half a bottle of Smirnoff, and full-time <i>Hooked on Phonics</i> enthusiast. Her hobbies include cleaning up after her roommates, setting fire to descriptions of herself, and watching Food Network. Seriously, how do they make those paninis? Those people are sandwich magicians. After she graduates, you'll find her cuddled up with her dog Watson, who’s a good boy. Yes he iiiis. People may think she’s a blanket hog, but in fact, she's just a spring chicken. In a couple of years, she'll settle in Catan, but until then - DEAR GOD I'M ON FIRE SHIT SHIT SHIT")
 
 RyanSchmitt = Bio(
     'Clayton R. Schmitt',
@@ -89,7 +89,7 @@ TubbyTom = Bio(
     'Thomas S. Coleman',
     'Art Consultant, Consumer',
     'colemant.png',
-    "Pitchfork craft beer wayfarers sartorial cred, mcsweeney's synth umami letterpress keffiyeh +1 high life photo booth vegan YOLO. Irony vice fashion axe tattooed kale chips, chillwave 3 wolf moon deep v hoodie farm-to-table authentic pinterest mlkshk. Single-origin coffee disrupt sustainable yr semiotics jean shorts. Aesthetic occupy bushwick swag. Readymade cred sartorial selvage semiotics disrupt craft beer, tousled +1 mustache. Flexitarian sustainable stumptown keffiyeh, dreamcatcher blog vinyl jean shorts. Put a bird on it tattooed biodiesel, dreamcatcher ethical odd future next level flannel keffiyeh.")
+    '''Hi, I'm Tom and I'm fucking awesome. I bet you are too. I was born and raised primarily in St. Louis. Though I've lived in Baton Rogue, Detroit and various parts of California. I crave chaos and I'm an adrenaline addict. I've hiked 2 mountains; Mt. Pilchuck and a fake mountain in the middle of Cabela's filled with taxidermy. I love nerd culture, partying and traveling. Currently living outside of Seattle, will be moving back to the 314 come May. <br/><br/><a href="http://www.okcupid.com/profile/tecii">Go through my page, find something we have in common and message me da fuck back.</a>''')
 
 JustinKellogg = Bio(
     'Justin M. Kellogg',
