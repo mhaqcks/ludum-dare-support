@@ -30,7 +30,7 @@ KaitlynnJansen = Bio(
     'Kaitlynn E. Jansen',
     'Mathematics, Wiles',
     'jansenk.png',
-    "Wiles is a part-time mathematics instructor, part-time connoisseur of half a bottle of Smirnoff, and full-time Hooked on Phonics enthusiast. Her hobbies include cleaning up after her roommates, setting fire to descriptions of herself, and watching Food Network. Seriously, how do they make those paninis? Those people are sandwich magicians. After she graduates, you'll find her cuddled up with her dog Watson, who’s a good boy. Yes he iiiis. People may think she’s a blanket hog, but in fact, she just likes to cuddle. In a couple of years, she'll settle in Catan, but until then - DEAR GOD I'M ON FIRE SHIT SHIT SHIT")
+    "Wiles is a part-time mathematics instructor, part-time connoisseur of half a bottle of Smirnoff, and full-time <i>Hooked on Phonics</i> enthusiast. Her hobbies include cleaning up after her roommates, setting fire to descriptions of herself, and watching Food Network. Seriously, how do they make those paninis? Those people are sandwich magicians. After she graduates, you'll find her cuddled up with her dog Watson, who’s a good boy. Yes he iiiis. People may think she’s a blanket hog, but in fact, she just likes to cuddle. In a couple of years, she'll settle in Catan, but until then - DEAR GOD I'M ON FIRE SHIT SHIT SHIT")
 
 RyanSchmitt = Bio(
     'Clayton R. Schmitt',
