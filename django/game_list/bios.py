@@ -123,6 +123,12 @@ JimMahon = Bio(
     'mahonj.png',
     '<iframe width="310" height="310" src="http://www.youtube.com/embed/9KTDz-ZisZ0" frameborder="0" allowfullscreen></iframe>')
 
+ShawnBodden = Bio(
+    'Shawn M. Bodden',
+    'Lead Vidja Editor, Clam Stylist',
+    'boddens.png',
+    'Duis auctor cursus hendrerit. Proin lorem ipsum, tempor ut hendrerit sit amet, luctus fermentum odio. Donec quis urna ac elit accumsan varius. Integer id posuere ipsum. Curabitur id ligula mi. Maecenas ut tellus lacus. Vivamus magna enim, cursus quis malesuada sit amet, pulvinar nec sem. Donec vel tortor mi, quis feugiat elit. Mauris consectetur mauris eget mauris ultrices in fermentum sem malesuada. Proin id massa est. Donec a ligula quis erat tincidunt euismod at venenatis nulla. Nulla dapibus, turpis ut scelerisque malesuada, lorem nulla posuere velit, eu bibendum purus libero id nunc. Quisque ornare, dolor ac dignissim dapibus, nunc risus scelerisque diam, at pharetra nunc enim eget justo.')
+
 BIOS = [
     JacobGardner,
     EmilyGannon,
@@ -139,4 +145,5 @@ BIOS = [
     ZachLee,
     JaredFrisby,
     JimMahon,
+    ShawnBodden,
 ]
