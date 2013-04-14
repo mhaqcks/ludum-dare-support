@@ -19,7 +19,6 @@ function get_game(game_number, password) {
 	});
 }
 
-
 function add_row(element, index, array)
 {
 	var row = $('<tr>');
@@ -49,7 +48,6 @@ function add_row(element, index, array)
 			get_game(selected_game, null);
 		});
 	}
-
 
 	var players_info = element.players.split('/');
 	if( players_info[0] == players_info[1] ) {

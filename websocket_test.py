@@ -1,21 +1,23 @@
 import tornado.ioloop
-from tornado import websocket
+from rpc_socket import RPCSocket
+import random
 
 
-class EchoWebSocket(websocket.WebSocketHandler):
-    def open(self):
-        print("WebSocket opened")
+class LudumSocket(RPCSocket):
+    SAFE_FUNCTIONS = {
+        'check_version': 'version',
+    }
 
-    def on_message(self, message):
-        print(message)
-        self.write_message(u"You said: " + message)
-
-    def on_close(self):
-        print("WebSocket closed")
-
+    def version(self):
+        v = random.randint(0, 1)
+        print(v)
+        if v:
+            self.js.version('v0.01')
+        else:
+            self.js.version('v0.02')
 
 application = tornado.web.Application([
-    (r"/", EchoWebSocket),
+    (r"/", LudumSocket),
 ])
 
 if __name__ == "__main__":
