@@ -1,6 +1,5 @@
 import tornado.ioloop
 from rpc_socket import RPCSocket
-import random
 
 
 class LudumSocket(RPCSocket):
@@ -9,12 +8,7 @@ class LudumSocket(RPCSocket):
     }
 
     def version(self):
-        v = random.randint(0, 1)
-        print(v)
-        if v:
-            self.js.version('v0.01')
-        else:
-            self.js.version('v0.02')
+        self.js.version('v0.1')
 
 application = tornado.web.Application([
     (r"/", LudumSocket),

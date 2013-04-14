@@ -3,7 +3,7 @@ var websocket_timer = 0;
 var connection = 0;
 var response = 0;
 
-var expect_ver = 'v0.02';
+var expect_ver = 'v0.1';
 
 function command(data) {
 	connection.send(JSON.stringify(data));
