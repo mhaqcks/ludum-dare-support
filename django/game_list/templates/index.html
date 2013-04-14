@@ -120,8 +120,9 @@
 </div>
 
 <script type="text/javascript" src="/static/js/ui/jquery.ui.position.js"></script>
-<script type="text/javascript" src="/static/js/notifications.js"></script>
-<script type="text/javascript" src="/static/js/game_list.js"></script>
+<script type="text/javascript" src="/static/js/prj/notifications.js"></script>
+<script type="text/javascript" src="/static/js/prj/game_list.js"></script>
+<script type="text/javascript" src="/static/js/prj/sockets.js"></script>
 
 
 <script type="text/javascript">
@@ -155,6 +156,8 @@
 		return false;
 	});
 
+
+	// Filters Cause Server List Updates
 	$('#player-filter').change(function() {
 		player_filter = $('#player-filter').val();
 		load_list();
@@ -165,18 +168,17 @@
 		load_list();
 	});
 
-	var timeout1 = 0;
+	var filter_timeout = 0;
 	$('#game-number').keyup(function() {
-		clearTimeout(timeout1);
-		timeout1 = setTimeout(load_list, 500);
+		clearTimeout(filter_timeout);
+		filter_timeout = setTimeout(load_list, 500);
 	});
-
-	var timeout2 = 0;
 	$('#game-name').keyup(function() {
-		clearTimeout(timeout2);
-		timeout2 = setTimeout(load_list, 500);
+		clearTimeout(filter_timeout);
+		filter_timeout = setTimeout(load_list, 500);
 	});
 
+	// Sync Bar
 	function start_load(xhr, settings)
 	{
 		set_csrf(xhr, settings);	
@@ -195,46 +197,6 @@
 		$('#sync').animate({
 			top: '-40px'
 		});
-	}
-
-	var websocket_timer = 0;
-	var connection = 0;
-	function attempt_connection() {
-		websocket_timer = setTimeout(attempt_connection, 1500);
-
-		if( connected_to_client == true )
-			return;
-
-		connection = new WebSocket('ws://localhost:65456/');
-
-		connection.onopen = function() {
-			connected_to_client = true;	
-			remove_notification('no-connection');
-			connection.send(JSON.stringify({
-				command: 'this is a command'
-			}));
-		}
-
-		connection.onerror = function(error) {
-			console.log(error);
-		}
-
-		connection.onmessage = function(e) {
-			console.log('Server: ' + e.data);
-		}
-
-		connection.onclose = function() {
-			add_notification(
-				'no-connection', 
-				'Connection could not be established!', 
-				'Please make sure you are running the <a href="' 
-					+ download_page + '">game client</a>.', 
-				'alert-error');
-			if( connected_to_client == true ) {
-				console.log('Connection Lost');
-			}
-			connected_to_client = false;
-		}
 	}
 
 	$(document).ready(function() {

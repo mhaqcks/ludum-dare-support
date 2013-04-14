@@ -5,7 +5,7 @@
 			"path": "./"
 		},
 		{
-			"path": "./django"
+			"path": "./django/game_list"
 		}
 	]
 }
