@@ -9,4 +9,5 @@ urlpatterns = patterns(
     url(r'^download/$', views.download, name='download'),
     url(r'^games/$', views.games, name='games'),
     url(r'^retrieve_game/$', views.retrieve_game, name='retrieve_game'),
+    url(r'^gadget/$', views.gadget, name='gadget'),
 )

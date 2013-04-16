@@ -129,3 +129,7 @@ def retrieve_game(request):
         'connect_info': 'jacobvgardner.com/server/yep',
         })
     return HttpResponse(content, content_type='application/json')
+
+
+def gadget(request):
+    return render(request, 'gadget.xml')
