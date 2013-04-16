@@ -26,12 +26,13 @@
 <hr />
 
 <div class="jumbotron" style="margin: 5px">
-<button type="button" class="btn btn-success">
+
+<button id="create-game-hangout" type="button" class="btn btn-success">
 	<img src="https://ssl.gstatic.com/images/icons/gplus-32.png">
 	Create Game With Hangout
 </button>
 
-<button type="button" class="btn btn-success">
+<button id="create-game-no-hangout" type="button" class="btn btn-success">
 	Create Game Without Hangout 
 	<img src="/static/img/sad_face.png">
 </button>
@@ -133,6 +134,9 @@
 
 <button id="sync" type="button" class="btn btn-info"><i class="icon-refresh icon-spin"></i> Syncronizing Content...</button>
 
+
+<span id="dialogs">
+<!--
 <div id="create-game-dialog" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="WutWutwut" aria-hidden="true">
 	<div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -144,6 +148,7 @@
     	<button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
 </div>
+-->
 
 <div id="connect-dialog" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="StillWut" aria-hidden="true">
 	<div class="modal-header">
@@ -171,8 +176,7 @@
 <div id="password-dialog" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="wutIsThis" aria-hidden="true">
 	<div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	    <h3 id="myModalLabel">Please Enter The Game Password...</h3>
-	</div>
+	    <h3 id="myModalLabel">Please Enter The Game Password...</h3> </div>
 	<form id="password-form form-inline" style="margin-bottom: 0px">
 		<div class="modal-body" style="padding-bottom: 0px">
 			<input id="pass" type="password" class="input-small span4" placeholder="You Put The Password Here" />
@@ -183,15 +187,19 @@
 	  	</div>
   	</form>
 </div>
+</span>
 
 <script type="text/javascript" src="/static/js/ui/jquery.ui.position.js"></script>
 <script type="text/javascript" src="/static/js/prj/notifications.js"></script>
 <script type="text/javascript" src="/static/js/prj/game_list.js"></script>
 <script type="text/javascript" src="/static/js/prj/sockets.js"></script>
+<script type="text/javascript" src="/static/js/prj/create_game.js"></script>
 
 
 <script type="text/javascript">
 	$('[rel=tooltip]').tooltip();
+
+	$('#create-game-no-hangout').click(create_game);
 
 	var player_filter = 'All';
 	var lock_filter = 'All';
