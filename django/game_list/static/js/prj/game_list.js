@@ -1,8 +1,12 @@
 function get_game(game_number, password) {
 
+	function pre_cunnect(xhr, settings) {
+		set_csrf(xhr, settings);
+	}
+
 	$.ajax({
 		url: game_url,
-		beforeSend: set_csrf,
+		beforeSend: pre_cunnect,
 		data: {
 			'game_number': selected_game,
 			'password': $('#pass').val(),
@@ -12,6 +16,7 @@ function get_game(game_number, password) {
 			if(data.error != null) {
 				alert(data.error);
 			} else {
+				$('#connect-dialog').modal();
 				console.log(data.connect_info);
 			}
 
