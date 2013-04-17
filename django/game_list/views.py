@@ -133,3 +133,7 @@ def retrieve_game(request):
 
 def gadget(request):
     return render(request, 'gadget.xml')
+
+
+def build_game(request):
+    return HttpResponse('callback({"game_number": "8"})', content_type='application/json')

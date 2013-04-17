@@ -44,4 +44,36 @@ function create_game() {
 	$('#dialogs').append(dialog);
 
 	dialog.modal();
+
+	form.submit(function() {
+
+		build_game(
+			$('#game-title').val(), 
+			$('#game-password').val(), 
+			$('#game-players').val());
+		dialog.modal('hide');
+
+		return false;
+	});
+}
+
+function build_game(title, password, num_players) {
+	$.ajax({
+		url: 'https://jacobvgardner.com/game/build_game/',	
+		crossDomain: true,
+		success: function(data) {
+			get_game(data.game_number, password);	
+		},
+		dataType: 'JSONP',
+		data: {
+			'title': title,
+			'password': password,
+			'num_players': num_players
+		},
+		error: function(jqXHR, textStatus, error) {
+			console.log(textStatus);
+			console.log(error);
+		},
+	});
+	console.log(title, password, num_players);	
 }
