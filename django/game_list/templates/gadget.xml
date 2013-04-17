@@ -21,7 +21,7 @@
 <html>
 
 <link href="https://jacobvgardner.com/static/css/bootstrap.min.css" rel="stylesheet">
-  
+
 <style type="text/css">
 <!--
 .button {
@@ -48,6 +48,8 @@ input {
 <script src="https://jacobvgardner.com/static/js/jquery-1.9.1.min.js"></script>
 <script src="https://jacobvgardner.com/static/js/bootstrap.min.js"></script>
 <script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.4" ></script>
+<script type="text/javascript" src="https://jacobvgardner.com/static/js/prj/notifications.js"></script>
+<script type="text/javascript" src="https://jacobvgardner.com/static/js/prj/sockets.js"></script>
 <script src="https://jacobvgardner.com/static/js/prj/create_game.js"></script>
 
 <!--
@@ -97,9 +99,16 @@ function init() {
   gapi.hangout.onApiReady.add(
       function(eventObj) {
         create_game();
+
+        if( typeof(WebSocket) != 'function' ) {
+          websockets_enabled = false;
+        }
+
+        if( websockets_enabled == true ) {
+          attempt_connection();
+        }
+
         if (eventObj.isApiReady) {
-          document.getElementById('showParticipants')
-            .style.visibility = 'visible';
         }
       });
 }
