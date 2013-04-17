@@ -2,17 +2,17 @@
 var title = $('<div class="control-group">');
 title.append($('<label class="control-label" for="inputTitle">').text('Title'));
 title.append($('<div class="controls">').append(
-	$('<input type="text" id="game-title" placeholder="Game Title">')));
+	$('<input type="text" id="game-title" placeholder="Game Title" style="height: 100%;">')));
 
 var password = $('<div class="control-group">');
 password.append($('<label class="control-label" for="inputPassword">').text('Password'));
 password.append($('<div class="controls">').append(
-	$('<input type="password" id="game-password" placeholder="Password (if protected)">')));
+	$('<input type="password" id="game-password" placeholder="Password (if protected)" style="height: 100%;">')));
 
 var num_players = $('<div class="control-group">');
 num_players.append($('<label class="control-label" for="inputPlayers">').text('Max Players'));
 num_players.append($('<div class="controls">').append(
-	$('<input type="number" id="game-players" placeholder="Maximum Number of Players" value="5" min="1" max="50">')));
+	$('<input type="number" id="game-players" placeholder="Maximum Number of Players" value="5" min="1" max="50" style="height: 100%;">')));
 
 function create_game() {
 	console.log('creating game');
