@@ -95,6 +95,7 @@ function showParticipants() {
 }
 
 var websockets_enabled = true;
+var download_page = 'https://jacobvgardner.com/game/download/';
 
 function init() {
   // When API is ready...                                                         
