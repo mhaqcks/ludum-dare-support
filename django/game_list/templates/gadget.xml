@@ -94,6 +94,8 @@ function showParticipants() {
   div.innerHTML = retVal;
 }
 
+var websockets_enabled = true;
+
 function init() {
   // When API is ready...                                                         
   gapi.hangout.onApiReady.add(
