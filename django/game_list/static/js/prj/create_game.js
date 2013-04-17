@@ -12,7 +12,7 @@ password.append($('<div class="controls">').append(
 var num_players = $('<div class="control-group">');
 num_players.append($('<label class="control-label" for="inputPlayers">').text('Max Players'));
 num_players.append($('<div class="controls">').append(
-	$('<input type="text" id="game-players" placeholder="Maximum Number of Players">')));
+	$('<input type="number" id="game-players" placeholder="Maximum Number of Players" value="5" min="1" max="50">')));
 
 function create_game() {
 	console.log('creating game');

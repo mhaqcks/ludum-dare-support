@@ -27,19 +27,19 @@
 
 <div class="jumbotron" style="margin: 5px">
 
-<a href="https://plus.google.com/hangouts/_?gid=916338472305" id="create-game-hangout" class="btn btn-success">
+<a href="https://plus.google.com/hangouts/_?gid=916338472305" id="create-game-hangout" class="btn btn-success" rel="tooltip" data-title="Create a game where all participates will be in a Google+ Hangout Together">
 	<img src="https://ssl.gstatic.com/images/icons/gplus-32.png">
 	Create Game With Hangout
 </a>
 
-<button id="create-game-no-hangout" type="button" class="btn btn-success">
+<button id="create-game-no-hangout" type="button" class="btn btn-success" rel="tooltip" data-title="Create a game without using a Google+ hangout">
 	Create Game Without Hangout 
 	<img src="/static/img/sad_face.png">
 </button>
 </div>
 <hr />
 
-<buttton id="refresh-btn" type="button" class="btn btn-inverse">Refresh List</buttton>
+<buttton id="refresh-btn" type="button" class="btn btn-inverse" rel="tooltip" data-title="Refresh the game list below">Refresh List</buttton>
 <!-- Example row of columns -->
 <div class="row-fluid">
 	<table id='gametable' class='table table-striped table-bordered'>
@@ -64,7 +64,7 @@
 					</select>
 				</th>
 				<th class="span4">
-					<a href="#" rel="tooltip" data-title="Game Status - Probably Just a Random String">Status</a>
+					<a href="#" rel="tooltip" data-title="Game Features - What Features Are In This Game">Features</a>
 				</th>
 				<th class="span3" style="padding: 2px;">
 					<div 
