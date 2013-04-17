@@ -72,6 +72,11 @@ input {
 
 <p><a href="http://developers.google.com/+/hangouts/getting-started">Read the docs</a> to learn more about developing hangouts!</a></p>
 
+
+<div class="alerts" id="alerts">
+<span id="alert-header"></span>
+</div>
+
 <script>
 function showParticipants() {
   var participants = gapi.hangout.getParticipants();
@@ -119,6 +124,9 @@ function init() {
 // Wait for gadget to load.                                                       
 gadgets.util.registerOnLoadHandler(init);
 </script>
+
+
+
 </body>
 ]]>
 </Content>
