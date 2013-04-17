@@ -1,4 +1,4 @@
-
+var connected_to_client = false;
 var websocket_timer = 0;
 var connection = 0;
 var response = 0;
