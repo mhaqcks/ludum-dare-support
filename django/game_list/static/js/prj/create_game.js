@@ -43,6 +43,10 @@ function create_game() {
 
 	$('#dialogs').append(dialog);
 
+	$('#game-password').val('');
+	$('#game-players').val(5);
+	$('#game-title').val('');
+
 	dialog.modal();
 
 	form.submit(function() {
@@ -64,7 +68,9 @@ function build_game(title, password, num_players) {
 		success: function(data) {
 			get_game(data.game_number, password);	
 		},
+		type: 'POST',
 		dataType: 'JSONP',
+		jsonpCallback: 'callback',
 		data: {
 			'title': title,
 			'password': password,

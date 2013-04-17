@@ -8,8 +8,8 @@ function get_game(game_number, password) {
 		url: game_url,
 		beforeSend: pre_cunnect,
 		data: {
-			'game_number': selected_game,
-			'password': $('#pass').val(),
+			'game_number': game_number,
+			'password': password,
 		},
 		type: 'POST',
 		success: function(data, textStatus, jqXHR) {
