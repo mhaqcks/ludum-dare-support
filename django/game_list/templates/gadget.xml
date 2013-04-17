@@ -40,6 +40,20 @@ input {
   height: 30px;
 }
 
+.alerts {
+  z-index: 2000;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0px;
+  margin: 0px;
+}
+
+.alert {
+  margin: 0;
+}
+
+
 -->
 </style>
 
