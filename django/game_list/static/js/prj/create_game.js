@@ -15,7 +15,7 @@ num_players.append($('<div class="controls">').append(
 	$('<input type="number" id="game-players" placeholder="Maximum Number of Players" value="5" min="1" max="50" style="height: 100%;">')));
 
 function create_game() {
-	console.log('creating game');
+	console.log('Creating Game...');
 	$('#old-dialog').remove();
 	var dialog = $('<div id="old-dialog" class="modal fide hide" tabindex="-1" role="dialog" aria-labelledby="WATWAT" aria-hidden="true">');
 

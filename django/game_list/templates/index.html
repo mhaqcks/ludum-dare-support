@@ -27,12 +27,12 @@
 
 <div class="jumbotron" style="margin: 5px">
 
-<a href="https://plus.google.com/hangouts/_?gid=916338472305" id="create-game-hangout" class="btn btn-success" rel="tooltip" data-title="Create a game where all participates will be in a Google+ Hangout Together" target="_blank">
+<a href="https://plus.google.com/hangouts/_?gid=916338472305" id="create-game-hangout" class="btn btn-primary" rel="tooltip" data-title="Create a game where all participates will be in a Google+ Hangout Together" target="_blank">
 	<img src="https://ssl.gstatic.com/images/icons/gplus-32.png">
 	Create Game With Hangout
 </a>
 
-<button id="create-game-no-hangout" type="button" class="btn btn-success" rel="tooltip" data-title="Create a game without using a Google+ hangout">
+<button id="create-game-no-hangout" type="button" class="btn btn-primary" rel="tooltip" data-title="Create a game without using a Google+ hangout">
 	Create Game Without Hangout 
 	<img src="/static/img/sad_face.png">
 </button>
@@ -137,19 +137,6 @@
 
 <span id="dialogs">
 
-<div id="connect-dialog" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="StillWut" aria-hidden="true">
-	<div class="modal-header">
-	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	    <h3>Connect To Game...</h3>
-    </div>
-    <div class="modal-body">
-    	Connect Info Here...
-    </div>
-    <div class="modal-footer">
-    	<button type="button" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    </div>
-</div>
-
 <div id="password-dialog" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="wutIsThis" aria-hidden="true">
 	<div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -172,7 +159,6 @@
 <script type="text/javascript" src="/static/js/prj/game_list.js"></script>
 <script type="text/javascript" src="/static/js/prj/sockets.js"></script>
 <script type="text/javascript" src="/static/js/prj/create_game.js"></script>
-
 
 <script type="text/javascript">
 	$('[rel=tooltip]').tooltip();

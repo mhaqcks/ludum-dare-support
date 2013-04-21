@@ -6,6 +6,10 @@
 		},
 		{
 			"path": "./django/game_list"
+		},
+		{
+			"path": "./django/game_list/static/js/prj"
 		}
+
 	]
 }
