@@ -12,7 +12,7 @@ def create_game(self, games, name, max_players=5, password=''):
 
     create_game.number += 1
 
-    games += [g]
+    games[code] = [g]
     return g
 create_game.number = 0
 
@@ -24,7 +24,6 @@ def connect(games, game_number, password=''):
                 return {'Error': 'Invalid Password!'}
             else:
                 return {'Success': g.code}
-
 
 class Game(object):
     def __init__(self, code, password, number, name, max_players=5):
@@ -51,8 +50,14 @@ class GameProtocol(protocol.Protocol):
     def connectionMade(self):
         logging.debug('Connection Made...')
 
+    def error(self, msg):
+        self.transport.write(json.dumps({
+            'command': 'error',
+            'args': {'message': msg}
+            }))
+
     def connectionLost(self, reason):
-        logging.debug('Connection Lost...')
+        logging.debug('Connection Lost: {0}'.format(reason))
 
         if self.current_game:
             if not self.current_game.drop_client(self):
@@ -60,8 +65,23 @@ class GameProtocol(protocol.Protocol):
 
         # Otherwise, we never connected to a game anyway. Lulz
 
-    def dataReceieved(self, data):
-        pass
+    def join_game(self, code):
+        logging.debug('Joining: {0}'.format(code))
+
+        try:
+            self.current_game = self.games[code]
+        except KeyError:
+            self.error('That Game Does Not Exist')
+
+
+    def dataReceived(self, data):
+        info = json.loads(data)
+
+        if info['command'] == 'join':
+            self.join_game(**info['args'])
+        else:
+            logging.debug('Data: {0}'.format(data))
+            self.transport.write(data)
 
 
 class GameFactory(protocol.Factory):
@@ -138,7 +158,7 @@ class ServerGameFactory(protocol.Factory):
 
 
 def main():
-    games = []
+    games = {}
     reactor.listenTCP(8675, GameFactory(games))
     reactor.listenTCP(5768, ServerGameFactory(games))
     reactor.run()
