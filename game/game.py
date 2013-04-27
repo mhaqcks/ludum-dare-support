@@ -8,7 +8,7 @@ def main():
     @window.event
     def on_draw():
         window.clear()
-        level.draw()
+        level.process()
 
     pyglet.app.run()
 
