@@ -1,4 +1,5 @@
 {
+	"name": "test",
 	"panels": [
 		{"x": 9, "y": 288, "width": 131, "height": 279, "sleep": 1.5},
 		{"x": 147, "y": 288, "width": 311, "height": 277, "sleep": 1.5},

@@ -10,22 +10,22 @@ loader = Loader(PATH)
 
 class ComicLevel(object):
     def __init__(self, comic):
-        self.sprite = Sprite(loader.image('{0}.png'.format(comic)))
-
+        self.comic = comic
+        self.sprite = Sprite(loader.image('{0}.png'.format(self.comic)))
         self.width = self.sprite.width
         self.height = self.sprite.height
-
-        panel_file = loader.file('{0}.json'.format(comic))
-
+        panel_file = loader.file('{0}.json'.format(self.comic))
         self.comic_config = json.loads(panel_file.read())
         self.panels = self.comic_config['panels']
 
-        self.current_panel = self.panels[0]
+        self.begin()
 
+    def begin(self, driver=None):
+        self.sprite.x = self.sprite.y = 0
         self.start = time.time()
-
         self.mode = 'startup'
         self.panel = 0
+        self.driver = driver
 
     def position(self, x, y):
         x = -(x * self.sprite.scale)
@@ -44,7 +44,8 @@ class ComicLevel(object):
             self.panel = panel
 
         if self.panel >= len(self.panels):
-            pass
+            self.panel = len(self.panels) - 1
+            self.driver.change_level(self.comic_config['next_scene'])
 
     def startup(self):
         if time.time() - self.start < config.INIT_PAUSE:
@@ -116,7 +117,6 @@ class ComicLevel(object):
             )
 
     def sleepy_time(self):
-        print(time.time() - self.start, self.panels[self.panel]['sleep'])
         if time.time() - self.start > self.panels[self.panel]['sleep']:
             self.startTransition()
 
@@ -128,4 +128,5 @@ class ComicLevel(object):
         elif self.mode == 'sleepy_time':
             self.sleepy_time()
 
+        print(self.sprite.x, self.sprite.y, self.sprite.scale)
         self.sprite.draw()
