@@ -9,7 +9,9 @@
 		},
 		{
 			"path": "./django/game_list/static/js/prj"
-		}
-
+		},
+		{
+			"path": "./client"
+		},
 	]
 }

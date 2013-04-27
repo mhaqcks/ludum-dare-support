@@ -70,6 +70,7 @@ JSON = [
 
 
 def games(request):
+    # This should interact with individual game servers instead :)
 
     content = JSON
     print(request.POST)
