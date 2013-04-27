@@ -1,9 +1,12 @@
 import pyglet
+from level import ComicLevel
+import config
+
 
 def main():
-    window = pyglet.window.Window(width=1280, height=720)
+    window = pyglet.window.Window(width=config.WIDTH, height=config.HEIGHT)
 
-    level = StartLevel()
+    level = ComicLevel('test_comic')
 
     @window.event
     def on_draw():
