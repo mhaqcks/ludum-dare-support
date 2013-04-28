@@ -11,7 +11,15 @@
 			"path": "./django/game_list/static/js/prj"
 		},
 		{
-			"path": "./client"
+			"path": "./game"
 		},
-	]
+	],
+	"build_systems":
+    [
+        {
+            "name": "Run Game",
+            "working_dir": "${project_path}/game",
+            "cmd": ["python", "game.py"]
+        }
+    ]
 }

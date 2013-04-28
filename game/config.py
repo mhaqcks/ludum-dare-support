@@ -1,8 +1,8 @@
-from easing import easeInOutQuad
+from easing import *
 
 WIDTH = 1280
 HEIGHT = 720
 
 INIT_PAUSE = 0.700
-TRANSITION_TIME = 0.500
+TRANSITION_TIME = 0.750
 COMIC_EASE = easeInOutQuad

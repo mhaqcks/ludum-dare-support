@@ -92,6 +92,18 @@ class ComicLevel(object):
         y += y_buffer / 2
 
         if time.time() - self.start > config.TRANSITION_TIME:
+
+            self.sprite.scale = self.scale(
+                self.panels[self.panel]['width'],
+                self.panels[self.panel]['height'])
+
+            x, y = self.position(
+                self.panels[self.panel]['x'],
+                self.panels[self.panel]['y'])
+
+            x += x_buffer / 2
+            y += y_buffer / 2
+
             prev_x, prev_y = x, y
             prev_scale = scale
 
@@ -116,6 +128,7 @@ class ComicLevel(object):
             config.TRANSITION_TIME
             )
 
+
     def sleepy_time(self):
         if time.time() - self.start > self.panels[self.panel]['sleep']:
             self.startTransition()
@@ -128,5 +141,4 @@ class ComicLevel(object):
         elif self.mode == 'sleepy_time':
             self.sleepy_time()
 
-        print(self.sprite.x, self.sprite.y, self.sprite.scale)
         self.sprite.draw()
